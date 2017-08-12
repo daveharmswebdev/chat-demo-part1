@@ -1,0 +1,13 @@
+h1 { 
+  margin: 0 auto; 
+  width: 8em;
+  text-align: center; 
+}
+
+li { 
+  text-align: left; 
+}
+
+form {
+  padding: 0 200px;
+}

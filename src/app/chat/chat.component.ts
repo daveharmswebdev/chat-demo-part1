@@ -25,7 +25,7 @@ import { Component, OnInit } from '@angular/core';
     </div>
   `,
   styles: [`
-    h1 { margin: 0 auto; width: 8em; }
+    h1 { margin: 0 auto; width: 8em; text-align: center; }
     li { text-align: left; }
   `]
 })
