@@ -3,10 +3,6 @@
   <h1>
     Welcome to {{title}}!
   </h1>
-  <button (click)="loginWithGoogle()" class="btn btn-primary">Login with Google</button>
-  <div *ngIf="user && user.displayName">
-    <h3>{{user?.displayName}}</h3>
-  </div>
 </div>
 <app-nav-bar></app-nav-bar>
 <router-outlet></router-outlet>

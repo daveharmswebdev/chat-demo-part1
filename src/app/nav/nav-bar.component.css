@@ -1,0 +1,11 @@
+#loginWithGoogle:hover {
+  color: goldenrod;
+  cursor: pointer;
+}
+#loggedInUser {
+  color: blueviolet;
+  font-size: 200%;
+}
+.chatUser {
+  padding-right: 10px;
+}
