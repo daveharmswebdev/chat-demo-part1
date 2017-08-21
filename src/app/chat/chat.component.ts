@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from './chat.service';
 
 @Component({
   template: `
@@ -33,13 +34,10 @@ export class ChatComponent implements OnInit {
   currentChat: any[];
   message: string;
 
+  constructor(private chatService: ChatService) {}
+
   ngOnInit() {
-    this.currentChat = [
-      { user: 'bob', message: 'hey, what are you doing?' },
-      { user: 'jeff', message: 'learning angular 4' },
-      { user: 'bob', message: 'cool, angular is great' },
-      { user: 'jeff', message: 'i know that\'s right' },
-    ];
+    this.currentChat = this.chatService.getChat();
   }
 
   chat(formValue) {
