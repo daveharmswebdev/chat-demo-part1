@@ -7,6 +7,7 @@ import { AuthService } from './../login/auth.service';
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav">
         <li><a [routerLink]="['/chat']">Chat</a></li>
+        <li><a *ngIf="isAuthenticated()" (click)="logOut()">Log Out</a></li>
       </ul>
       <div class="chatUser navbar-header navbar-right">
         <ul class="nav navbar-nav">
@@ -47,6 +48,12 @@ export class NavBarComponent implements OnInit {
 
   loginWithGoogle() {
     this.auth.loginWithGoogle();
+  }
+
+  logOut() {
+    if (window.confirm('Are you sure?')) {
+      this.auth.logOut();
+    }
   }
 
 }
