@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './../login/auth.service';
 import { ChatService } from './chat.service';
 
 @Component({
@@ -33,15 +34,23 @@ import { ChatService } from './chat.service';
 export class ChatComponent implements OnInit {
   currentChat: any[];
   message: string;
+  currentUser: any;
 
-  constructor(private chatService: ChatService) {}
+  constructor(
+    private auth: AuthService,
+    private chatService: ChatService
+  ) {}
 
   ngOnInit() {
     this.currentChat = this.chatService.getChat();
+    this.auth.getAuthState().subscribe(user => {
+      this.currentUser = user;
+      console.log('chat component', this.currentUser);
+    });
   }
 
   chat(formValue) {
-    const newMessage = Object.assign(formValue, { user: 'anonymous'});
+    const newMessage = Object.assign(formValue, { user: this.currentUser.email});
     this.currentChat.push(newMessage);
     this.message = '';
   }

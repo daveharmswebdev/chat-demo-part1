@@ -17,5 +17,5 @@ export class ChatService {
   submitChatMessage(message) {
     devChat.push(message);
   }
-  
+
 }
