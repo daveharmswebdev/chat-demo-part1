@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
-
-const devChat = [
-  { user: 'bob', message: 'hey, what are you doing?' },
-  { user: 'jeff', message: 'learning angular 4' },
-  { user: 'bob', message: 'cool, angular is great' },
-  { user: 'jeff', message: 'i know that\'s right' },
-];
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class ChatService {
 
+  constructor(private db: AngularFireDatabase) {}
+
   getChat() {
-    return devChat;
+    return this.db.list('/messages');
   }
 
   submitChatMessage(message) {
-    devChat.push(message);
+    this.db.list('/messages').push(message);
   }
 
 }

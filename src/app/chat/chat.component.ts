@@ -42,7 +42,9 @@ export class ChatComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.currentChat = this.chatService.getChat();
+    this.chatService.getChat().subscribe(
+      messages => this.currentChat = messages
+    );
     this.auth.getAuthState().subscribe(user => {
       this.currentUser = user;
       console.log('chat component', this.currentUser);
@@ -51,7 +53,7 @@ export class ChatComponent implements OnInit {
 
   chat(formValue) {
     const newMessage = Object.assign(formValue, { user: this.currentUser.email});
-    this.currentChat.push(newMessage);
+    this.chatService.submitChatMessage(newMessage);
     this.message = '';
   }
 
